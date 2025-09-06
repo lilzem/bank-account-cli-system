@@ -52,12 +52,12 @@ func (acc *Account) addHistoryRecord(action Action, amount float64, otherAccId *
 	acc.History = append(acc.History, record)
 }
 
-func (acc *Account) PrintHistory() {
+func (acc Account) PrintHistory() {
 	for _, record := range acc.History {
 		record.Print()
 	}
 }
 
-func (acc *Account) PrintBalance() {
+func (acc Account) PrintBalance() {
 	fmt.Printf("Current balance is: %.2f$ \n", acc.Balance)
 }
