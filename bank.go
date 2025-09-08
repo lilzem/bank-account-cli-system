@@ -14,7 +14,7 @@ func (b *Bank) AddAccount(account *Account) {
 	b.accounts[account.Id] = account
 }
 
-func (b Bank) Transfer(amount float64, senderId, receiverId int) error {
+func (b *Bank) Transfer(amount float64, senderId, receiverId int) error {
 	sender, senderOk := b.accounts[senderId];
 	reciever, recieverOk := b.accounts[receiverId];
 	if (!senderOk) {
@@ -33,7 +33,7 @@ func (b Bank) Transfer(amount float64, senderId, receiverId int) error {
 	return nil
 }
 
-func (b Bank) GetAccount(id int) (*Account, error) {
+func (b *Bank) GetAccount(id int) (*Account, error) {
 	acc, ok := b.accounts[id]
 	if ok {
 		return acc, nil
@@ -41,7 +41,7 @@ func (b Bank) GetAccount(id int) (*Account, error) {
 	return nil, fmt.Errorf("error: no account with this id in the bank")
 }
 
-func (b Bank) PrintAccounts() {
+func (b *Bank) PrintAccounts() {
 	for _, acc := range b.accounts {
 		fmt.Printf("Account: %d %s \n", acc.Id, acc.Name)
 	}

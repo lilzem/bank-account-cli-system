@@ -24,7 +24,7 @@ func NewHistoryRecord(action Action, delta , balance float64, otherAccId *int) (
 	}
 }
 
-func (r HistoryRecord) ParseDelta() (string, error) {
+func (r *HistoryRecord) ParseDelta() (string, error) {
 	switch r.Action {
 		case Withdraw:
 			return fmt.Sprintf("-$%.2f", r.Delta), nil
@@ -42,7 +42,7 @@ func (r HistoryRecord) ParseDelta() (string, error) {
 
 }
 
-func (r HistoryRecord) Print() {
+func (r *HistoryRecord) Print() {
 	delta, err := r.ParseDelta()
 	if err != nil {
 		fmt.Printf("%q", err)
